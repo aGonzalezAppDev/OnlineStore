@@ -10,6 +10,8 @@ public class OnlineStore {
 
         // create new ArrayList to pass product file
         ArrayList<Product> inventory = getInventory();
+        // create cart array to hold the items for purchase and to hold duplicates
+        ArrayList<Product> cart = new ArrayList<>();
 
 
         Scanner myScanner =  new Scanner(System.in);
@@ -34,8 +36,10 @@ public class OnlineStore {
             // create a switch in order to take care of choices from Home Screen
             switch (choice) {
                 case 1:
-                    // methods
+                    // display the products that we sell
                     displayProducts(inventory);
+                    // add item to cart/go back home method
+
                     break;
                 case 2:
                     // methods
@@ -47,8 +51,6 @@ public class OnlineStore {
                     System.out.println("Entered wrong choice! Please enter number from 1-3 "); // in case user enters wrong choice
                     break;
             }
-
-
         }
     }
 
@@ -83,7 +85,21 @@ public class OnlineStore {
         }
     }
 
+    // method to add items to cart
+    private static void addToCart(ArrayList<Product> inventory, Scanner myScanner) {
+        // user to enter product ID to add to cart or (X) to go back to home screen
+        System.out.println("----------------------------------");
+        System.out.println("Enter the product Id to add to cart or [X] to go back to Home Screen:  ");
+        String productId = myScanner.nextLine();
+        if (productId.equalsIgnoreCase("X")) { // exit back to home screen
+            return;
+        } else { // use id to add to cart
+                
 
+        }
+
+
+    }
 
 
 

@@ -10,8 +10,6 @@ public class OnlineStore {
 
         // create new ArrayList to pass product file
         ArrayList<Product> inventory = getInventory();
-        // use Collections to get the
-
 
 
         Scanner myScanner =  new Scanner(System.in);
@@ -20,6 +18,7 @@ public class OnlineStore {
         // create Home Screen
         while(choice != 3) {
             // Display Menu for HomeScreen
+            System.out.println("----------------------------------");
             System.out.println("The Store Home Screen");
             System.out.println("----------------------------------");
             System.out.println(" ");
@@ -79,7 +78,8 @@ public class OnlineStore {
     private static void displayProducts(ArrayList<Product> inventory) {
         // create for loop to iterate through array
         for (Product product : inventory) {
-            System.out.println(product);
+            System.out.printf("Id: %s - Name: %s - Price: $%.2f%n",
+                    product.getId(), product.getName(), product.getPrice());
         }
     }
 

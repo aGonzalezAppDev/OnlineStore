@@ -39,10 +39,14 @@ public class OnlineStore {
                     // display the products that we sell
                     displayProducts(inventory);
                     // add item to cart/go back home method
-
+                    addToCart(inventory,myScanner);
                     break;
                 case 2:
-                    // methods
+                    // show cart method as the big feature/prompts if user wants to check out or go back to home screen
+                    // SHOW CART - displays list of items and total amount of cart
+
+
+
                     break;
                 case 3:
                     System.out.println("Thank You! Exiting application!"); // exit message - 3 will end loop
@@ -94,14 +98,42 @@ public class OnlineStore {
         if (productId.equalsIgnoreCase("X")) { // exit back to home screen
             return;
         } else { // use id to add to cart
-                
-
+           for (Product product : inventory) {
+               ArrayList<Product> cart = new ArrayList<>();
+               cart.add(product);
+               System.out.println(product + "has been added to the cart!");
+           }
         }
-
-
     }
 
+    private static void showCart(ArrayList<Product> cart) {
+        // iterate through the arrayList and display all items
+        for (Product product : cart) {
+            System.out.printf("Id: %s - Name: %s - Price: $%.2f%n",
+                    product.getId(), product.getName(), product.getPrice());
+            // get total amount of cart
+            int sum = 0;
+            while (product != null) {
+                sum += product.getPrice();
+                System.out.println(sum);
+            }
+        }
+    }
 
+    private static void checkOut(ArrayList<Product> cart, Scanner myScanner){
+        // ask user if they want to check out or go back to home screen
+        System.out.println("----------------------------------");
+        System.out.println("Do you want to Check Out (C) or go back to Home Screen (X): ");
+        String choice = myScanner.nextLine();
+        if (choice.equalsIgnoreCase("X")) { // exit back to home screen
+            return;
+
+
+
+
+
+        }
+    }
 
 
 

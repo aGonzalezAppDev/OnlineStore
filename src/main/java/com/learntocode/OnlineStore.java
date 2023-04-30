@@ -43,8 +43,11 @@ public class OnlineStore {
                     break;
                 case 2:
                     // show cart method as the big feature/prompts if user wants to check out or go back to home screen
-                    // SHOW CART - displays list of items and total amount of cart
-
+                    // Show Cart - displays list of items and total amount of cart
+                    showCart(cart);
+                    // Check Out method
+                    checkOut(cart,myScanner);
+                    // method for money exchange and clear of current cart
 
 
                     break;
@@ -106,6 +109,7 @@ public class OnlineStore {
         }
     }
 
+    // method for showing current cart with products in it and the total price of cart
     private static void showCart(ArrayList<Product> cart) {
         // iterate through the arrayList and display all items
         for (Product product : cart) {
@@ -120,6 +124,7 @@ public class OnlineStore {
         }
     }
 
+    // method for prompting user to check out or go back to the home screen, display total of cart
     private static void checkOut(ArrayList<Product> cart, Scanner myScanner){
         // ask user if they want to check out or go back to home screen
         System.out.println("----------------------------------");
@@ -127,16 +132,35 @@ public class OnlineStore {
         String choice = myScanner.nextLine();
         if (choice.equalsIgnoreCase("X")) { // exit back to home screen
             return;
-
-
-
-
-
+        } else { // check out code execution
+            System.out.println("Total amount owed: ");
+            System.out.println("----------------------------------");
+            showTotalCart(cart, myScanner);
         }
     }
 
+    // method for showing the total of the cart and using it in checkOut and in case need it again
+    private static void showTotalCart(ArrayList<Product> cart, Scanner myScanner) {
+        for (Product product : cart) {
+            int sum = 0;
+            while(product != null) {
+                sum += product.getPrice();
+                System.out.println(sum);
+            }
+        }
+
+        
+
+    }
+
+    // put inside the showTotalCart method so it is shown and used consecutively
+    // method for prompting user for payment and execute money exchange, lastly clear cart and Home Screen
+    private static void checkOutExecution(Scanner myScanner){
+        System.out.println("Please enter payment amount: ");
+        float paymentAmount = myScanner.nextFloat();
 
 
+    }
 
 
 

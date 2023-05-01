@@ -23,7 +23,7 @@ public class OnlineStore {
             System.out.println("----------------------------------");
             System.out.println("The Store Home Screen");
             System.out.println("----------------------------------");
-            System.out.println(" ");
+            System.out.println("");
             System.out.println("1 - Show Products");
             System.out.println("2 - Show Cart");
             System.out.println("3 - [Exit] - close out of application ");
@@ -46,10 +46,9 @@ public class OnlineStore {
                     // Show Cart - displays list of items and total amount of cart
                     showCart(cart);
                     // Check Out method
-                    checkOut(cart,myScanner);
+                    checkOut(cart, myScanner);
                     // method for money exchange and clear of current cart
-
-
+                    showTotalCart(cart, myScanner);
                     break;
                 case 3:
                     System.out.println("Thank You! Exiting application!"); // exit message - 3 will end loop
@@ -147,19 +146,28 @@ public class OnlineStore {
                 sum += product.getPrice();
                 System.out.println(sum);
             }
+            System.out.println("Please enter payment amount: ");
+            float paymentAmount = myScanner.nextFloat();
+            if (paymentAmount != sum) {
+                System.out.println("Sorry this does not cover the current balance of cart! Money returned to costumer.");
+                break;
+            } else if {
+                System.out.println("Wrong amount input please make sure to provide sufficient funds.");
+            } else {
+                // calculate transaction and then display change owed
+                float change = paymentAmount - sum;
+                System.out.println("$" +  change + " is the total change due. ");
+                System.out.println("----------------------------------");
+                // print list of items that was purchased
+                System.out.printf("Id: %s - Name: %s - Price: $%.2f%n",
+                        product.getId(), product.getName(), product.getPrice());
+                System.out.println("Above items in cart were purchased!");
+                if (change == paymentAmount-sum) {
+                    ArrayList<Product> cart.clear();
+                }
+                return;
+            }
         }
-
-        
-
-    }
-
-    // put inside the showTotalCart method so it is shown and used consecutively
-    // method for prompting user for payment and execute money exchange, lastly clear cart and Home Screen
-    private static void checkOutExecution(Scanner myScanner){
-        System.out.println("Please enter payment amount: ");
-        float paymentAmount = myScanner.nextFloat();
-
-
     }
 
 
